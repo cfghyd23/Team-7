@@ -7,7 +7,8 @@ import { Select } from "@mantine/core";
 import { Box } from "@mantine/core";
 import { Title } from "@mantine/core";
 import { Image, Text } from "@mantine/core";
-
+import { Link } from 'react-router-dom';
+import { Register } from "./Register";
 const Login = () => {
   return (
     <>
@@ -66,7 +67,9 @@ const Login = () => {
         //   props.setWhatToShow("register");
         // }}
       >
-        Dont have an account ? <b>Sign Up</b>
+        Dont have an account ? <Link to="../Register" className="btn btn-primary">
+        <b style={{color:"black"}}>Sign Up</b>
+  </Link>
       </Text>
     </Box>
   </>

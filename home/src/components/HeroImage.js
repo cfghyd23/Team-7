@@ -87,7 +87,7 @@ export default function HeroImage() {
   <Link to="Login" className="btn btn-primary" style={{marginLeft: "130px"}} >
     Login
   </Link>
-  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  {/* &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; */}
   <Link to="Register" className="btn btn-primary">
     Register
   </Link>
