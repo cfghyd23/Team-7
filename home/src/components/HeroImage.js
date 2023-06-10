@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import "../components/Seperator/Seperator";
-
+import {Link} from 'react-router-dom'
 import "./HeroImageStyle.css";
 import { Separator } from "../components/Seperator/Seperator";
 
@@ -70,13 +70,10 @@ export default function HeroImage() {
         </p>
         <div>
           <br/><br/>
-          <button type="button" class="btn btn-primary" to="/training" style={{marginLeft: "130px"}} >
-            Login
-          </button>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <button to="/contact" className="btn btn-light">
-            Register
-          </button>
+          <Link to="/login" class="btn">
+            Login</Link>
+          <Link to="/register" class="btn">
+          Register</Link>  
         </div>
       </div>
     </section>
