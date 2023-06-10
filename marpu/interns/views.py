@@ -3,8 +3,8 @@ from interns.models import Intern, User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.messages import constants as messages
 from django.db import IntegrityError
-
-
+import json
+from django.views.decorators.csrf import csrf_exempt
 
 def home(request):
     return HttpResponse('hello')
@@ -40,23 +40,35 @@ def register(request):
         return render(request, "register.html")
 
 
+@csrf_exempt
 def login_view(request):
-    if request.method == "POST":
-
+    # if request.method == "POST":
+        print(request.body)
         # Attempt to sign user in
-        username = request.POST["username"]
-        password = request.POST["password"]
+        diction=json.loads(request.body)
+        username = diction['username']
+        password = diction["password"]
+        print(request.POST)
         user=User.objects.filter(username=username, password = password).get()
         print(user)
         print(password)
+        response_data={}
+
         # Check if authentication successful
-        
+        print(username)
+        print(password)
 
 
         if user is not None:
-            login(request, user)
-            return HttpResponse("User Logged in")
+            # login(request, user)
+            # return HttpResponse("User Logged in")
+            response_data['flag']=1
+            response_data['user']=user.username
+            return HttpResponse(json.dumps(response_data), content_type="application/json")
         else:
-            return HttpResponse("Invalid email or password")
-    else:
-        return render(request, "login.html")
+            # return HttpResponse("Invalid email or password")
+            response_data['flag']=0
+            response_data['user']=None
+            return HttpResponse(json.dumps(response_data), content_type="application/json")
+    # else:
+        # return render(request, "login.html")
