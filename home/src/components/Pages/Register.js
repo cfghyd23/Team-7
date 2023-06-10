@@ -6,7 +6,7 @@ import { Box } from "@mantine/core";
 import { Title } from "@mantine/core";
 import { Image } from "@mantine/core";
 
-const Login = () => {
+const Register = () => {
     return (
         <>
           <Box
@@ -82,4 +82,4 @@ const Login = () => {
       );
 }
 
-export default Login
+export default Register
