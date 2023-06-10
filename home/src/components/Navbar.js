@@ -1,48 +1,51 @@
-import React from "react";
-import 'bootstrap/dist/css/bootstrap.css';
-import './Navbar.css';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React,{useState} from 'react'
+import {Link} from 'react-router-dom' 
+import {FaBars,FaTimes} from 'react-icons/fa'
 
+import './NavbarStyle.css'
 const Navbar = () => {
-    
-    return (
-    <section id="header">
-      <div className="menu-bar">
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
-          <div className="container-fluid">
-            <a className="navbar-brand" href="#"><img src="logo.png" width="40" height="auto" alt="Logo"/></a>
-            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarNav">
-              <ul className="navbar-nav ms-auto">
-                <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="#">All Jobs</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">Companies</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">Walk-In</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">Govt.Jobs</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">Internships</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </div>
-      <div className="banner text-center">
-        <h1>JOBS AROUND YOU</h1>
-        <p>Keep Looking!</p>
-      </div>
-    </section>
-  );
-}
 
+    const [click,setClick] = useState(false)
+    const handleClick = () => setClick(!click)
+
+    const[color,setColor] = useState(false)
+    const changeColor = ()=>{
+        if(window.scrollY >= 100){
+            setColor(true)
+        }else{
+            setColor(false)
+        }
+    }
+
+    window.addEventListener('scroll',changeColor)
+
+
+  return (
+    <div className={color ? 'header header-bg': 'header'}>
+        <Link to='/'><h1>GLX TRVL</h1></Link>
+        <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+            <li>
+                <Link to='/'>Home</Link>
+            </li>
+            <li>
+                <Link to='/pricing'>Pricing</Link>
+            </li>
+            <li>
+                <Link to='/training'>Training</Link>
+            </li>
+            <li>
+                <Link to='/contact'>Contact</Link>
+            </li>
+        </ul>
+        <div className='hamburger' onClick={handleClick}>
+
+            {click ? (<FaTimes size={20} style={{color:'#fff'}} />):(<FaBars size={20} style={{color:'#fff'}}/>)}
+
+            
+
+        </div>
+    </div>
+  )
+}
 
 export default Navbar
