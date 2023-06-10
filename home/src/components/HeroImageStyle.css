@@ -5,12 +5,20 @@
   
   .carousel-container {
     flex: 1;
+    display: flex;
+    margin-top: 70px;
+    margin-left: 50px;
+    height: 300px;
+    width: 300px;
   }
   
   .text-container {
     flex: 1;
     padding: 0 20px;
+    margin-top: 110px;
   }
+
+
   
   /* Add any additional styles as needed */
   

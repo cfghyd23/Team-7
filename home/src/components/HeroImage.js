@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
+import "../components/Seperator/Seperator";
 
 import "./HeroImageStyle.css";
+import { Separator } from "../components/Seperator/Seperator";
 
 const imageData = [
   // Image data array
@@ -59,16 +61,19 @@ export default function HeroImage() {
         </Carousel>
       </div>
       <div className="text-container">
-        <h4>About the company</h4>
+        <h4 style={{marginLeft: "200px"}}>About the company</h4><Separator/><br/>
         <p>
-          "Hypothesis space refers to the set of all possible hypotheses that a
-          machine learning algorithm can choose from to explain or predict a
-          given dataset."
+          "MARPU" - means the change.We are a passionate and empathetic 
+          team driven by a deep sense of compassion and a desire to make a difference.
+          So if you're ready to be a leader in creating a better world, sign up to be a 
+          MarpuMaker today and let's make a difference together!
         </p>
         <div>
-          <button to="/training" className="btn">
+          <br/><br/>
+          <button type="button" class="btn btn-primary" to="/training" style={{marginLeft: "130px"}} >
             Login
           </button>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <button to="/contact" className="btn btn-light">
             Register
           </button>
