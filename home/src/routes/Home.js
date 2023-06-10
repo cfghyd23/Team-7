@@ -1,13 +1,13 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
-import Video from '../components/Video'
+import HeroImage from '../components/HeroImage'
 import Footer from '../components/Footer'
 const Home = () => {
   return (
     <div>
-        <Navbar/>
-        <Video />
-        <Footer/>
+        {/* <Navbar/> */}
+        <HeroImage/>
+        {/* <Footer/> */}
     </div>
   )
 }
