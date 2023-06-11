@@ -8,6 +8,7 @@ import Contact from './routes/Contact'
 import Login from './components/Pages/Login'
 import Register from './components/Pages/Register'
 import Intern from './components/User/Intern';
+import Orientation from './components/about';
 function App() {
   return (
     <div >
@@ -16,6 +17,7 @@ function App() {
           <Route path='/login' element={<Login/>}/>
           <Route path='/register' element={<Register/>}/>
           <Route path='/intern' element={<Intern/>}/>
+          <Route path='/orientation' element={<Orientation/>}/>
           <Route path='/training' element={<Training/>}/>
           <Route path='/contact' element={<Contact/>}/>
       </Routes>
