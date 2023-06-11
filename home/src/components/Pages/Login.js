@@ -7,39 +7,39 @@ import { Select } from "@mantine/core";
 import { Box } from "@mantine/core";
 import { Title } from "@mantine/core";
 import { Image, Text } from "@mantine/core";
-<<<<<<< HEAD
 import axios from "axios";
+import {Link} from "react-router-dom";
  
 export default function Login (props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [success, setSuccess] = useState(false);
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
   const updatePassword = (e) => {
     setPassword(e.target.value);
   };
-  const handleSubmit = async () => {
+  const handleSubmit = () => {
     console.log("helo");
-    const response = await axios.post("http://localhost:8000/interns/login/", {
+    const response = axios.post("http://localhost:8000/interns/login/", {
       username: email,
       password: password,
+    }).then((response)=>{
+      console.log(response);
+      // 200 - successful login
+      // 400 - unsuccessful login
+      // When login request is successful
+      if (response.data.flag === "0") {
+        setSuccess(false);
+        console.log("unsuccessful login");
+      } else {
+        setSuccess(true);
+        console.log("Success Login ")
+      }  
     });
-    console.log(response);
-    // 200 - successful login
-    // 400 - unsuccessful login
-    // When login request is successful
-    if (response.data.flag === "0") {
-      console.log("unsuccessful login");
-    } else {
-      console.log("Success Login")
-    }
+   
   };
-=======
-import { Link } from 'react-router-dom';
-import { Register } from "./Register";
-const Login = () => {
->>>>>>> 9611b80ac0d2b828a32395d211229230125e4c89
   return (
     <>
     <Box
@@ -87,24 +87,17 @@ const Login = () => {
         radius="md"
         size="xs"
         sx={{ marginTop: "5px" }}
-        onClick={handleSubmit}
-      >
-        Login
+        onClick={() => {
+          handleSubmit();
+          // <Link to="./User/HeaderIn.jsx"/>
+
+        }
+        }
+      
+        >Login
       </Button>
-<<<<<<< HEAD
-=======
-      <Text
-        style={{ marginTop: "10px" }}
-        // onClick={() => {
-        //   props.setLoggedIn(0);
-        //   props.setWhatToShow("register");
-        // }}
-      >
-        Dont have an account ? <Link to="../Register" className="btn btn-primary">
-        <b style={{color:"black"}}>Sign Up</b>
-  </Link>
-      </Text>
->>>>>>> 9611b80ac0d2b828a32395d211229230125e4c89
+      
+    {success && <Link to="../User/Intern.jsx"/>}
     </Box>
   </>
 );
