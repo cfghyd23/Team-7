@@ -5,8 +5,41 @@ import { Select } from "@mantine/core";
 import { Box } from "@mantine/core";
 import { Title } from "@mantine/core";
 import { Image } from "@mantine/core";
-
-const Register = () => {
+import axios from "axios";
+import { useState } from "react";
+ 
+export default function Register(props) {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [pass, setPass] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [cause, setCause] = useState("");
+ 
+  const handleNameChange = (event) => {
+    setName(event.target.value);
+  };
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+  const handlePassChange = (event) => {
+    setPass(event.target.value);
+  };
+  const handleMobileChange = (event) => {
+    setMobile(event.target.value);
+  };
+  const handleCausehange = (event) => {
+    setCause(event.target.value);
+  };
+ 
+  const handleSubmit = async () => {
+    const response = await axios.post("http://localhost:8000/interns/register/", {
+      name: name,
+      email: email,
+      mobile: mobile.toString(),
+      password: pass,
+    });
+    console.log(response);
+  };
     return (
         <>
           <Box
@@ -38,12 +71,16 @@ const Register = () => {
               label="Name"
               size="sm"
               required
+              value={name}
+              onChange={handleNameChange}
             />
             <TextInput
               placeholder="Email"
               sx={{ height: "75px", width: "300px" }}
               label="Email"
               required
+              value={email}
+              onChange={handleEmailChange}
             />
             <TextInput
               placeholder="Password"
@@ -51,21 +88,27 @@ const Register = () => {
               label="Password"
               required
               type="password"
+              value={pass}
+              onChange={handlePassChange}
             />
-            <Select
+            {/* <Select
               label="Cause"
               sx={{ height: "75px", width: "300px" }}
               placeholder="Pick one"
+              value={cause}
+              onChange={handleCausehange}
               data={[
                 { value: "Education", label: "Education" },
                 { value: "Underprivilge", label: "AUnderprivilge" },
               ]}
-            />
+            /> */}
             <TextInput
               placeholder="Mobile Number"
               sx={{ height: "75px", width: "300px" }}
               label="Mobile Number"
               required
+              value={mobile}
+              onChange={handleMobileChange}
               
             />
             <Button
@@ -73,7 +116,10 @@ const Register = () => {
               radius="md"
               size="xs"
               sx={{ marginTop: "15px" }}
-              
+              onClick={() => {
+                handleSubmit();
+                //props.setWhatToShow("login");
+              }}
             >
               Register
             </Button>
@@ -81,5 +127,3 @@ const Register = () => {
         </>
       );
 }
-
-export default Register

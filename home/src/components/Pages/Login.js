@@ -7,8 +7,33 @@ import { Select } from "@mantine/core";
 import { Box } from "@mantine/core";
 import { Title } from "@mantine/core";
 import { Image, Text } from "@mantine/core";
-
-const Login = () => {
+import axios from "axios";
+ 
+export default function Login (props) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const updateEmail = (e) => {
+    setEmail(e.target.value);
+  };
+  const updatePassword = (e) => {
+    setPassword(e.target.value);
+  };
+  const handleSubmit = async () => {
+    console.log("helo");
+    const response = await axios.post("http://localhost:8000/interns/login/", {
+      username: email,
+      password: password,
+    });
+    console.log(response);
+    // 200 - successful login
+    // 400 - unsuccessful login
+    // When login request is successful
+    if (response.data.flag === "0") {
+      console.log("unsuccessful login");
+    } else {
+      console.log("Success Login")
+    }
+  };
   return (
     <>
     <Box
@@ -36,9 +61,9 @@ const Login = () => {
         sx={{ height: "75px", width: "300px" }}
         label="Email"
         required
-        // value={email}
-        // onChange={updateEmail}
-        // wrapperProps={{ autoComplete: "off" }}
+        value={email}
+        onChange={updateEmail}
+        wrapperProps={{ autoComplete: "off" }}
         autoComplete="none"
       />
       <TextInput
@@ -47,30 +72,19 @@ const Login = () => {
         label="Password"
         required
         type="password"
-        // value={password}
-        // onChange={updatePassword}
+        value={password}
+        onChange={updatePassword}
       />
       <Button
         color="grey"
         radius="md"
         size="xs"
         sx={{ marginTop: "5px" }}
-        //onClick={handleSubmit}
+        onClick={handleSubmit}
       >
         Login
       </Button>
-      <Text
-        style={{ marginTop: "10px" }}
-        // onClick={() => {
-        //   props.setLoggedIn(0);
-        //   props.setWhatToShow("register");
-        // }}
-      >
-        Dont have an account ? <b>Sign Up</b>
-      </Text>
     </Box>
   </>
 );
 }
-
-export default Login
