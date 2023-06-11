@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+  }
+  
+  .sidebar {
+    width: 200px;
+    margin-right:200px;
+    /* Sidebar styles */
+  }
+  
+  /* .main-content {
+    flex: 1;
+    /* Main content styles */
+  /* } */ 
+  

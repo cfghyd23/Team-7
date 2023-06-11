@@ -1,0 +1,30 @@
+.hero-image-container {
+  display: flex;
+  align-items: center;
+}
+
+.carousel-container {
+  flex: 1;
+  display: flex;
+  margin-top: 70px;
+  margin-left: 50px;
+  height: 300px;
+  width: 300px;
+}
+
+.text-container {
+  flex: 1;
+  padding: 0 20px;
+  margin-top: 110px;
+}
+
+.heading{
+  text-align: center;
+  color: #ffffff;
+  padding-bottom: 10px;
+}
+
+
+
+
+/* Add any additional styles as needed */
