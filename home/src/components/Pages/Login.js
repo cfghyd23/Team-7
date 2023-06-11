@@ -7,6 +7,7 @@ import { Select } from "@mantine/core";
 import { Box } from "@mantine/core";
 import { Title } from "@mantine/core";
 import { Image, Text } from "@mantine/core";
+<<<<<<< HEAD
 import axios from "axios";
  
 export default function Login (props) {
@@ -34,6 +35,11 @@ export default function Login (props) {
       console.log("Success Login")
     }
   };
+=======
+import { Link } from 'react-router-dom';
+import { Register } from "./Register";
+const Login = () => {
+>>>>>>> 9611b80ac0d2b828a32395d211229230125e4c89
   return (
     <>
     <Box
@@ -75,6 +81,7 @@ export default function Login (props) {
         value={password}
         onChange={updatePassword}
       />
+      <Link to='/intern' className='btn'>Login</Link>
       <Button
         color="grey"
         radius="md"
@@ -84,6 +91,20 @@ export default function Login (props) {
       >
         Login
       </Button>
+<<<<<<< HEAD
+=======
+      <Text
+        style={{ marginTop: "10px" }}
+        // onClick={() => {
+        //   props.setLoggedIn(0);
+        //   props.setWhatToShow("register");
+        // }}
+      >
+        Dont have an account ? <Link to="../Register" className="btn btn-primary">
+        <b style={{color:"black"}}>Sign Up</b>
+  </Link>
+      </Text>
+>>>>>>> 9611b80ac0d2b828a32395d211229230125e4c89
     </Box>
   </>
 );
