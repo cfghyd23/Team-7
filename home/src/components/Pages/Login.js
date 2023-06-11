@@ -51,6 +51,7 @@ const Login = () => {
         // value={password}
         // onChange={updatePassword}
       />
+      <Link to='/intern' className='btn'>Login</Link>
       <Button
         color="grey"
         radius="md"
